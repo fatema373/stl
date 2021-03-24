@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    vector<int>v;
+    vector<int>v1(4); //initial values are zeros
+    v1[0]=10;
+    v1.push_back(50);//function
+    vector<int>v2(5,100);//size 5 with initial value 100
+    v1.swap(v2);//function
+    cout<<v1.front()<<endl;//the first element
+    cout<<v1.back()<<endl;//the end element
+    cout<<v1.at(5)<<endl;//the element at the index
+    cout<<v.empty()<<endl;
+    cout<<v.max_size()<<endl;
+    v1.pop_back();//function that delete the end element
+    
+    return 0;
+}

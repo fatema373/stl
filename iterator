@@ -1,0 +1,35 @@
+# STL-array
+training for me to fast revision
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+   vector<int>V={10,20,30,40,50};
+   vector<int>::iterator t=V.begin();
+   for(; t<V.end(); t++){
+       cout << *t << endl;
+   }
+   cout << endl << endl ;
+   vector <int>:: reverse_iterator  T=V.rbegin();
+   for(; T!=V.rend(); T++){
+        cout << *T << endl;
+    }
+    cout << endl << endl ;
+    vector<int>::const_reverse_iterator it=V.crbegin();
+    for(; it<V.crend(); it++){
+        cout << *it << endl;
+    }
+    cout << endl << endl ;
+    auto tt=V.begin();
+    for(; tt<V.end(); tt++){
+        cout << *tt << endl;
+    }
+    V.insert(V.begin(),550);//to set value at the beginning of the vector
+    V.insert(V.end()-2,560);//function
+    V.emplace(V.begin(),555);//Faster than insert in time complexity
+    V.emplace_back(5566);//Faster than push_back()
+    V.erase(V.begin()+5);
+    V.erase(V.begin(),V.begin()+1);//delete this interval
+    
+    return 0;
+}
