@@ -1,0 +1,67 @@
+# stl
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+bool GreaterThanThree(int i){
+    return i>3;
+}
+int main() {
+  vector<int>v(10);
+  v={5,10,20,30,55,2,5,5,6,1};
+  cout<<"vecor size is: "<<v.size();
+  v.resize(5);//ok i changed the size but element still remain in the memory
+  v.shrink_to_fit();//destroy all element after size 5 so i solve this problem
+  sort(v.begin(),v.end());
+  cout<<endl;
+  for(auto it:v){
+      cout<<it<<endl;
+  }
+  reverse(v.begin(),v.end());
+  for(auto it:v){
+        cout<<it<<endl;
+    }
+  cout<<*min_element(v.begin(),v.end())<<endl;//return address so i put * before function two parameters is the iterval
+  cout<<*max_element(v.begin(),v.end())<<endl;//return address so i put * before function
+  auto pair =minmax(v.begin(),v.end());
+  cout<<*pair.first<<endl<<endl<< *pair.second;
+  //============================================================
+  vector<int>vec={2,3,5,3,5,51,10,55,1585,205};
+  sort(vec.begin(),vec.end());
+  auto tt=find_if(vec.begin(),vec.end(),GreaterThanThree);//less complexity
+  for(;tt<vec.end();tt++){
+      cout<<*tt<<"find if"<<endl;
+  }
+  int arr[]={20,30,40};
+  vector<int>vv(3);
+  copy(arr,arr+3,vv.begin());//copy the first three element in the array if i want more i can increase the number into the vector
+  for(auto u:vv){
+      cout<<u<<endl;
+  }
+  vector<int>vec1={10,20,30,40,50,50,5,603,5};
+  vector<int>vec2(15);
+  int arrr={1,2,3,5,5};
+  copy_backward(vec1.begin(),vec1.end(),vec2.end());//copy element to vec2 from the end to the first and you can control that by adding or subtracting
+  //we can use function copy to print all elements in the vector or array and add element too as we will see
+  copy(istream_iterator<int>(cin),istream_iterator<int>(),back_inserter(vec1));
+  copy(vec1.begin(),vec1.end(),ostream_iterator<int>(cout," ,"));
+  cout<<endl;
+  copy(arrr,arrr+5,ostream_iterator<int>(cout," ,"));
+  /*
+   properties of vectors
+   Add->back->O(1)constant time
+   Delete->back->O(1)constant time
+   Add->anywhere->O(N)linear time
+   Delete->anywhere->O(N)Linear time
+   Access->[]or at()->O(1)constant time
+   search->find()->O(log)logarithmic time
+  ===========================advantages==================
+   Dynamic array
+   ==========================disadvantages================
+   Expensive reallocation
+   Requires contiguous memory
+   */
+
+    return 0;
+}
